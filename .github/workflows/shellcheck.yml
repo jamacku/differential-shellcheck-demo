@@ -1,14 +1,14 @@
 name: Differential ShellCheck
 on:
   pull_request:
-    branches: [ main ]
+    branches: [ main, hidden-main ]
 
 permissions:
   contents: read
 
 jobs:
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     permissions:
       security-events: write
