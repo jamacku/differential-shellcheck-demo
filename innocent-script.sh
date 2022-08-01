@@ -7,6 +7,6 @@ UNUSED_VAR=""
 
 echo "I'm going to remove directory $1/$DIR_SUFFIX"
 
-rm -rf "$1"/"$DIR_SUFFIX"
+rm -rf "${1:?"Please pass name of directory as argument."}"/"$DIR_SUFFIX"
 
 echo "My job here is done, enjoy :-)"
