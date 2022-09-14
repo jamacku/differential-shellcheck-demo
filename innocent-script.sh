@@ -11,6 +11,6 @@ echo "I'm going to remove directory $1/$DIR_SUFFIX"
 
 rm $1
 
-exit 1
+exit a
 
 echo $DIR_SUFFIX
