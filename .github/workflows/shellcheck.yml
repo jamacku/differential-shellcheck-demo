@@ -11,8 +11,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     permissions:
-      security-events: write
-      pull-requests: write
+      pull-requests: none
 
     steps: 
       - name: Repository checkout
