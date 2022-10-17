@@ -1,2 +1,4 @@
+# ShellCheck RC file
+
 # note[SC2086]: Double quote to prevent globbing and word splitting.
 disable=SC2086
