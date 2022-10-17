@@ -1,5 +1,3 @@
-#!/bin/bash
-
 echo "I'm innocent script, just pass the name of the directory as parameter and I'll remove it for you..."
 
 DIR_SUFFIX="*"
