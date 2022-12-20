@@ -1,5 +1,7 @@
 name: Differential ShellCheck
 on:
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -17,6 +19,6 @@ jobs:
           fetch-depth: 0
 
       - name: Differential ShellCheck
-        uses: redhat-plumbers-in-action/differential-shellcheck@latest
+        uses: jamacku/differential-shellcheck@run-on-push
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
