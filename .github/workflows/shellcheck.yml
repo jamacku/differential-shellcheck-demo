@@ -3,6 +3,7 @@
 name: Differential ShellCheck
 on:
   push:
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -14,7 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     
     permissions:
+      # required for all workflows
       security-events: write
+
+      # only required for workflows in private repositories
+      actions: read
+      contents: read
 
     steps:
       - name: Repository checkout
@@ -25,8 +31,6 @@ jobs:
       - id: ShellCheck
         name: Differential ShellCheck
         uses: redhat-plumbers-in-action/differential-shellcheck@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - if: ${{ always() }}
         name: Upload artifact with ShellCheck defects in SARIF format
@@ -34,5 +38,11 @@ jobs:
         with:
           name: Differential ShellCheck SARIF
           path: ${{ steps.ShellCheck.outputs.sarif }}
+
+      - if: ${{ always() }}
+        name: Upload SARIF to GitHub using github/codeql-action/upload-sarif
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ${{ steps.ShellCheck.outputs.sarif }}
 
 ...
