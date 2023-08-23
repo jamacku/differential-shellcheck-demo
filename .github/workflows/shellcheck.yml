@@ -1,9 +1,8 @@
 ---
 
-name: Differential ShellCheck
+name: Lint Shell
 on:
   push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -11,16 +10,12 @@ permissions:
   contents: read
 
 jobs:
-  lint:
+  differential-shellcheck:
+    name: Differential ShellCheck
     runs-on: ubuntu-latest
     
     permissions:
-      # required for all workflows
       security-events: write
-
-      # only required for workflows in private repositories
-      actions: read
-      contents: read
 
     steps:
       - name: Repository checkout
@@ -31,6 +26,8 @@ jobs:
       - id: ShellCheck
         name: Differential ShellCheck
         uses: redhat-plumbers-in-action/differential-shellcheck@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - if: ${{ always() }}
         name: Upload artifact with ShellCheck defects in SARIF format
@@ -39,10 +36,32 @@ jobs:
           name: Differential ShellCheck SARIF
           path: ${{ steps.ShellCheck.outputs.sarif }}
 
-      - if: ${{ always() }}
-        name: Upload SARIF to GitHub using github/codeql-action/upload-sarif
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+
+    permissions:
+      security-events: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - run: cargo install shellcheck-sarif sarif-fmt
+
+      - run: shellcheck --format=json innocent-script.sh | shellcheck-sarif | tee
+          results.sarif | sarif-fmt
+
+      - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: ${{ steps.ShellCheck.outputs.sarif }}
+          category: sarif-rs
+          sarif_file: results.sarif
+          token: ${{ secrets.GITHUB_TOKEN }}
 
 ...
