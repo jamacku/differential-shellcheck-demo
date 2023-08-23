@@ -3,6 +3,7 @@
 name: Lint Shell
 on:
   push:
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
