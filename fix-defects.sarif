@@ -1,0 +1,331 @@
+{
+  "runs": [
+    {
+      "results": [
+        {
+          "fixes": [],
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "innocent-script.sh"
+                },
+                "region": {
+                  "endColumn": 11,
+                  "endLine": 6,
+                  "startColumn": 1,
+                  "startLine": 6
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "UNUSED_VAR appears unused. Verify use (or export if used externally)."
+          },
+          "relatedLocations": [],
+          "ruleId": "2034",
+          "ruleIndex": 0
+        },
+        {
+          "fixes": [],
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "innocent-script.sh"
+                },
+                "region": {
+                  "endColumn": 24,
+                  "endLine": 12,
+                  "startColumn": 17,
+                  "startLine": 12
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Word is of the form \"A\"B\"C\" (B indicated). Did you mean \"ABC\" or \"A\\\"B\\\"C\"?"
+          },
+          "relatedLocations": [],
+          "ruleId": "2140",
+          "ruleIndex": 1
+        },
+        {
+          "fixes": [],
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "innocent-script.sh"
+                },
+                "region": {
+                  "endColumn": 29,
+                  "endLine": 15,
+                  "startColumn": 15,
+                  "startLine": 15
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Use $(...) notation instead of legacy backticks `...` Suggestions: use [`$(`](1), use [`)`](2)"
+          },
+          "relatedLocations": [
+            {
+              "id": 1,
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "innocent-script.sh"
+                },
+                "region": {
+                  "endColumn": 16,
+                  "endLine": 15,
+                  "startColumn": 15,
+                  "startLine": 15
+                }
+              },
+              "message": {
+                "text": "$("
+              }
+            },
+            {
+              "id": 2,
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "innocent-script.sh"
+                },
+                "region": {
+                  "endColumn": 29,
+                  "endLine": 15,
+                  "startColumn": 28,
+                  "startLine": 15
+                }
+              },
+              "message": {
+                "text": ")"
+              }
+            }
+          ],
+          "ruleId": "2006",
+          "ruleIndex": 2
+        },
+        {
+          "fixes": [],
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "innocent-script.sh"
+                },
+                "region": {
+                  "endColumn": 19,
+                  "endLine": 21,
+                  "startColumn": 14,
+                  "startLine": 21
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Quote the parameter to -name so the shell won't interpret it."
+          },
+          "relatedLocations": [],
+          "ruleId": "2061",
+          "ruleIndex": 3
+        },
+        {
+          "fixes": [],
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "innocent-script.sh"
+                },
+                "region": {
+                  "endColumn": 15,
+                  "endLine": 21,
+                  "startColumn": 14,
+                  "startLine": 21
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Use ./*glob* or -- *glob* so names with dashes won't become options."
+          },
+          "relatedLocations": [],
+          "ruleId": "2035",
+          "ruleIndex": 4
+        },
+        {
+          "fixes": [],
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "innocent-script.sh"
+                },
+                "region": {
+                  "endColumn": 18,
+                  "endLine": 22,
+                  "startColumn": 5,
+                  "startLine": 22
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Tilde does not expand in quotes. Use $HOME."
+          },
+          "relatedLocations": [],
+          "ruleId": "2088",
+          "ruleIndex": 5
+        },
+        {
+          "fixes": [],
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "innocent-script.sh"
+                },
+                "region": {
+                  "endColumn": 21,
+                  "endLine": 23,
+                  "startColumn": 3,
+                  "startLine": 23
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Quotes/backslashes will be treated literally. Use an array."
+          },
+          "relatedLocations": [],
+          "ruleId": "2089",
+          "ruleIndex": 6
+        },
+        {
+          "fixes": [],
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "innocent-script.sh"
+                },
+                "region": {
+                  "endColumn": 29,
+                  "endLine": 23,
+                  "startColumn": 27,
+                  "startLine": 23
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Quotes/backslashes in this variable will not be respected."
+          },
+          "relatedLocations": [],
+          "ruleId": "2090",
+          "ruleIndex": 7
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "shellcheck",
+          "rules": [
+            {
+              "fullDescription": {
+                "text": "For more information: https://www.shellcheck.net/wiki/SC2034"
+              },
+              "id": "2034",
+              "name": "2034",
+              "shortDescription": {
+                "text": "SC2034"
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "For more information: https://www.shellcheck.net/wiki/SC2140"
+              },
+              "id": "2140",
+              "name": "2140",
+              "shortDescription": {
+                "text": "SC2140"
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "For more information: https://www.shellcheck.net/wiki/SC2006"
+              },
+              "id": "2006",
+              "name": "2006",
+              "shortDescription": {
+                "text": "SC2006"
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "For more information: https://www.shellcheck.net/wiki/SC2061"
+              },
+              "id": "2061",
+              "name": "2061",
+              "shortDescription": {
+                "text": "SC2061"
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "For more information: https://www.shellcheck.net/wiki/SC2035"
+              },
+              "id": "2035",
+              "name": "2035",
+              "shortDescription": {
+                "text": "SC2035"
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "For more information: https://www.shellcheck.net/wiki/SC2088"
+              },
+              "id": "2088",
+              "name": "2088",
+              "shortDescription": {
+                "text": "SC2088"
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "For more information: https://www.shellcheck.net/wiki/SC2089"
+              },
+              "id": "2089",
+              "name": "2089",
+              "shortDescription": {
+                "text": "SC2089"
+              }
+            },
+            {
+              "fullDescription": {
+                "text": "For more information: https://www.shellcheck.net/wiki/SC2090"
+              },
+              "id": "2090",
+              "name": "2090",
+              "shortDescription": {
+                "text": "SC2090"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}

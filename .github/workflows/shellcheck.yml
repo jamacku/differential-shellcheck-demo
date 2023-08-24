@@ -3,6 +3,7 @@
 name: Lint Shell
 on:
   push:
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -61,7 +62,7 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           category: sarif-rs
-          sarif_file: results.sarif
+          sarif_file: full.sarif
           token: ${{ secrets.GITHUB_TOKEN }}
 
 ...
